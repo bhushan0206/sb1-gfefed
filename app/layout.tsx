@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navigation />
-          <main className="container mx-auto px-4 py-8">{children}</main>
+          <Suspense>
+            <main className="container mx-auto px-4 py-8">{children}</main>
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>
